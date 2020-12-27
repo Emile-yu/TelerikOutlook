@@ -1,0 +1,50 @@
+﻿<telerik:RadRibbonWindow x:Class="TelerikOutLook.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:core="clr-namespace:TelerikOutLook.Core;assembly=TelerikOutLook.Core"
+        Title="{Binding Title}" Height="350" Width="525">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <telerik:RadRibbonView prism:RegionManager.RegionName="{x:Static core:RegionNames.RibbonRegion}"/>
+        <!--telerik:RadRibbonView Grid.Row="0" Title="RibbonView Title" ApplicationName="My Application">
+            <telerik:RadRibbonView.QuickAccessToolBar>
+                <telerik:QuickAccessToolBar>
+                    <telerik:RadRibbonButton Foreground="White" Text="Option 1" />
+                </telerik:QuickAccessToolBar>
+            </>
+            <telerik:RadRibbonTab Header="Home">
+                <telerik:RadRibbonGroup Header="Clipboard">
+                    <telerik:RadRibbonSplitButton  
+                                                  Size="Large" 
+                                                  Text="Paste" 
+                                                  telerik:ScreenTip.Description="Paste the contents the Clipboard." 
+                                                  telerik:ScreenTip.Title="Paste(Ctrl+V)">
+                        <telerik:RadRibbonSplitButton.DropDownContent>
+                            <telerik:RadContextMenu BorderThickness="0">
+                                <telerik:RadMenuItem Header="Paste" />
+                                <telerik:RadMenuItem Header="Paste Form" />
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonSplitButton.DropDownContent>
+                    </telerik:RadRibbonSplitButton>
+                </telerik:RadRibbonGroup>
+            </telerik:RadRibbonTab>
+            <telerik:RadRibbonTab Header="View" />
+            
+        </telerik:RadRibbonView-->
+        
+        <DockPanel Grid.Row="1" LastChildFill="true">
+            <telerik:RadOutlookBar prism:RegionManager.RegionName="{x:Static core:RegionNames.OutlookGroupRegion}" 
+                                   SelectionChanged="RadOutlookBar_SelectionChanged"
+                                   DockPanel.Dock="Left" Width="237"/>
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
+        </DockPanel>
+        
+    </Grid>
+</telerik:RadRibbonWindow>

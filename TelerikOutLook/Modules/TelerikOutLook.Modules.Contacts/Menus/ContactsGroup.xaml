@@ -1,0 +1,12 @@
+﻿<telerik:RadOutlookBarItem x:Class="TelerikOutLook.Modules.Contacts.Menus.ContactsGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TelerikOutLook.Modules.Contacts.Menus"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                       Header="Contact">
+    <Grid>
+        <TextBlock Text="Contact Group"/>
+    </Grid>
+</telerik:RadOutlookBarItem>
