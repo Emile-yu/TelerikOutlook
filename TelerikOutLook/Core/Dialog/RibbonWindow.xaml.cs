@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Services.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,23 +11,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TelerikOutLook.Core;
-using TelerikOutLook.Modules.Mails.Menus;
+using Telerik.Windows.Controls;
 
-namespace TelerikOutLook.Modules.Mails.Views
+namespace TelerikOutLook.Core.Dialog
 {
     /// <summary>
-    /// Interaction logic for MailList.xaml
+    /// Interaction logic for RibbonWindow.xaml
     /// </summary>
-    [DependentView(RegionNames.RibbonRegion, typeof(HomeTab))]
-    public partial class MailList : UserControl, ISupportDataContext
+    public partial class RibbonWindow : IDialogWindow
     {
-        public MailList()
+        public RibbonWindow()
         {
             InitializeComponent();
         }
-    }
 
+        public IDialogResult Result { get; set; }
+    }
 }

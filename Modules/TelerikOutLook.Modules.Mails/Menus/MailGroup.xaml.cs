@@ -50,6 +50,7 @@ namespace TelerikOutLook.Modules.Mails.Menus
         {
             get
             {
+                
                 var item = _dataTree.SelectedItem as NavigationItem;
                 if (item != null)
                     return item.NavigationPath;

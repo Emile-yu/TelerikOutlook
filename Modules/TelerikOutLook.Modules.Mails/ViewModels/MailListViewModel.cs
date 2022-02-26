@@ -64,6 +64,7 @@ namespace TelerikOutLook.Modules.Mails.ViewModels
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
+            
             var folder = navigationContext.Parameters.GetValue<string>(FolderParameters.FolderKey);
 
             switch (folder)

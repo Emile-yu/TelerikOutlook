@@ -7,6 +7,10 @@ using TelerikOutLook.Modules.Contacts;
 using TelerikOutLook.Core;
 using Prism.Regions;
 using TelerikOutLook.Core.Regions;
+using Prism.Services.Dialogs;
+using TelerikOutLook.Core.Dialog;
+using System.Windows.Threading;
+using System;
 
 namespace TelerikOutLook
 {
@@ -33,10 +37,38 @@ namespace TelerikOutLook
             return w;*/
             return Container.Resolve<MainWindow>();
         }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            //handler for exception global
+            this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
+        }
+
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message);
+            e.Handled = true;
+        }
+
+        protected override void OnInitialized()
+        {
+            var login = Container.Resolve<loginScreen>();
+            bool? res = login.ShowDialog();
+            if (res.HasValue && res.Value)
+                base.OnInitialized();
+            else
+            {
+                Application.Current.Shutdown();
+            }
+        }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
+
+            containerRegistry.RegisterDialogWindow<RibbonWindow>();
+
+            containerRegistry.RegisterSingleton<IDialogService, MyDialogService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -50,5 +82,6 @@ namespace TelerikOutLook
             base.ConfigureDefaultRegionBehaviors(regionBehaviors);
             regionBehaviors.AddIfMissing(DependentViewRegionBehavior.BehaviorKey, typeof(DependentViewRegionBehavior));
         }
+        
     }
 }
